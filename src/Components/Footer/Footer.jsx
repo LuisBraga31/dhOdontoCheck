@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <div className={styles.footerWrapper}>
-        <button className={`btn btn-danger ${styles.top}`} onClick={scrollToTop}> ⇧ Voltar para o topo</button>
+        <button className={`btn btn-danger ${styles.top}`} onClick={scrollToTop}> <strong> ⇧ </strong>Voltar para o topo</button>
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar a class navbar-dark bg-dark ou navbar-light bg-light  */}
         <div className={`navbar-light bg-light} ${styles.footer}`}>

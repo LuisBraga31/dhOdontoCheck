@@ -12,7 +12,12 @@
   border: none;
   color: white;
   margin-top: 2rem;
-  width: 13%;
+  width: 20%;
+}
+
+strong {
+  padding-right: 10px;
+  font-size: 18px
 }
 
 .footer {
