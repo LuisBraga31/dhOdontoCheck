@@ -3,7 +3,7 @@ import LoginForm from "../../Components/LoginForm/LoginForm";
 const Contact = () => {
   return (
     <>
-      <h1>Login</h1>
+      <h1>É por isoooooooooooooooooo</h1>
       <LoginForm />
     </>
   );

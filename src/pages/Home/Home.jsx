@@ -1,19 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api"
 import Card from "../../Components/Card/Card";
 
 const Home = () => {
 
+  const [dentista, setDentista] = useState([]);
+
+  const getDentistas = async() => {
+    
+    const res = await api.get('/dentista');
+    setDentista(res.data);
+    console.log(res.data);
+  }
+
   useEffect(() => {
-    //Nesse useEffect, deverá ser obtido todos os dentistas da API
-    //Armazena-los em um estado para posteriormente fazer um map
-    //Usando o componente <Card />
+
+    getDentistas()
+
   }, []);
 
   return (
     <>
       <h1>Home</h1>
       <div className="card-grid container">
-        <Card />
+        { dentista?.map( (dentista, index) => (
+          <Card key={index} dentista={dentista} />
+        ))}
+        
       </div>
     </>
   );
