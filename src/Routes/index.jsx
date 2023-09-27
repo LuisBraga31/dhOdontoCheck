@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Detail from "../pages/Detail/Detail";
-import Contact from "../pages/Contact/Contact";
+import Contact from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
 
 // 21-09 - Configuramos a pasta de rotas com as 3 paginas existentes na aplicacao.

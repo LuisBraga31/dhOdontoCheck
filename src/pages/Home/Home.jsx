@@ -10,7 +10,6 @@ const Home = () => {
     
     const res = await api.get('/dentista');
     setDentista(res.data);
-    console.log(res.data);
   }
 
   useEffect(() => {

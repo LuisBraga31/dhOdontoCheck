@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
 
 const DetailCard = () => {
@@ -51,7 +50,7 @@ const DetailCard = () => {
           </div>
         </div>
       </section>
-      <ScheduleFormModal />
+     {/* /* <ScheduleFormModal /> */}
     </>
   );
 };
