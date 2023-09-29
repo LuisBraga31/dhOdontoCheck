@@ -1,3 +1,8 @@
+footer {
+  margin-top: 20%;
+  }
+
+
 .footerWrapper {
   margin-top: auto;
   display: flex;
@@ -22,6 +27,7 @@ strong {
 
 .footer {
   padding: 2rem 0;
+  margin-top: 20px;
 }
 
 .icons {
