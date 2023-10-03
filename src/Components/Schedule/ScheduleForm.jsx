@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
-import { OdontoContext } from "../../contexts/odontoContext";
+import { OdontoContext } from "../../contexts/OdontoContext";
 
 const ScheduleForm = () => {
 

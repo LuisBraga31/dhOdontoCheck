@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import { OdontoContext } from "../../contexts/odontoContext";
+import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
 
 const Navbar = () => {

@@ -4,7 +4,7 @@ import { AlternativeLayout } from '../layouts/AlternativeLayout'
 import Detail from "../pages/Detail/Detail";
 import Contact from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
-import OdontoContextProvider from '../contexts/odontoContext';
+import OdontoContextProvider from '../contexts/OdontoContext';
 
 
 // 21-09 - Configuramos a pasta de rotas com as 3 paginas existentes na aplicacao.

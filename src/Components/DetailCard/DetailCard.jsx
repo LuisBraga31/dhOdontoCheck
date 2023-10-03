@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styles from "./DetailCard.module.css";
-import { OdontoContext } from "../../contexts/odontoContext";
+import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
 
 const DetailCard = () => {

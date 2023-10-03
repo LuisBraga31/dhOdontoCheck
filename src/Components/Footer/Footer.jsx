@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "./Footer.module.css";
-import { OdontoContext } from "../../contexts/odontoContext";
+import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
 
 const Footer = ( {value} ) => {
