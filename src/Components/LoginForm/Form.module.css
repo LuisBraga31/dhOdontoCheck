@@ -2,7 +2,7 @@
   width: 23rem;
   gap: 1rem;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: 6rem; /* alteração da posição do login-form */
   height: calc(100vh -86px);
 }
 

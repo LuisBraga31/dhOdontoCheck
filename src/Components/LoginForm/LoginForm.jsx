@@ -1,6 +1,6 @@
 import styles from "./Form.module.css";
-//import { OdontoContext } from "../../contexts/odontoContext";
-//import { useContext } from "react";
+import { OdontoContext } from "../../contexts/OdontoContext";
+import { useContext } from "react";
 
 const LoginForm = () => {
   const handleSubmit = (e) => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
     //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
   };
 
-  //const { darkMode } = useContext(OdontoContext);
+  const { darkMode } = useContext(OdontoContext);
 
   return (
     <>
@@ -22,18 +22,18 @@ const LoginForm = () => {
 
         
       <div
-        className={`text-center card container ${styles.card}`}
+        className={`text-center card container ${styles.card} ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75`}`}
       >
         <div className={`card-body ${styles.CardBody}`}>
           <form onSubmit={handleSubmit}>
             <input
-              className={`form-control ${styles.inputSpacing}`}
+              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}`}
               placeholder="Login"
               name="login"
               required
             />
             <input
-              className={`form-control ${styles.inputSpacing}`}
+              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}`}
               placeholder="Password"
               name="password"
               type="password"
