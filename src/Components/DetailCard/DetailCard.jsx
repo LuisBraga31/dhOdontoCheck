@@ -16,11 +16,11 @@ const { darkMode } = useContext(OdontoContext);
     //substituídas com as informações que vem da api
     <>
       <h1>Detail about Dentist {'Nome do Dentista'} </h1>
-      <section className="card col-sm-12 col-lg-6 container">
+      <section className={`card col-sm-12 col-lg-6 container ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-2 border-secondary mb-2`}`}>
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
         <div
-          className={`card-body row`}
+          className={`card-body row ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75 `}`}
         >
           <div className="col-sm-12 col-lg-6">
             <img
@@ -31,11 +31,11 @@ const { darkMode } = useContext(OdontoContext);
           </div>
           <div className="col-sm-12 col-lg-6">
             <ul className="list-group">
-              <li className="list-group-item">Nome: {'Nome do Dentista'}</li>
-              <li className="list-group-item">
+              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75`} `}>Nome: {'Nome do Dentista'}</li>
+              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75`} `}>
                 Sobrenome: {'Sobrenome do Dentista'}
               </li>
-              <li className="list-group-item">
+              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75`} `}>
                 Usuário: {'Nome de usuário do Dentista'}
               </li>
             </ul>
