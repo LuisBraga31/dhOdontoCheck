@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import styles from "./DetailCard.module.css";
+import { OdontoContext } from "../../contexts/odontoContext";
+import { useContext } from "react";
 
 const DetailCard = () => {
+
+const { darkMode } = useContext(OdontoContext);  
 
   useEffect(() => {
     //Nesse useEffect, você vai fazer um fetch na api passando o 
@@ -41,8 +45,7 @@ const DetailCard = () => {
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                className={`btn btn-light ${styles.button
-                  }`}
+                className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button}`}
               >
                 Marcar consulta
               </button>

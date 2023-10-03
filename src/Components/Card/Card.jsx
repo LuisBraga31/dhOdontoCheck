@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 import styles from "./Card.module.css";
+//import { OdontoContext } from "../../contexts/odontoContext";
+//import { useContext } from "react";
 
 const Card = ( {dentista} ) => {
+  
+  //const { darkMode } = useContext(OdontoContext);
 
   return (
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
       <div className={`card`}>
+       
         <img
           className="card-img-top"
           src="/images/doctor.jpg"

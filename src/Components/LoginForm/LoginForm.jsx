@@ -1,4 +1,6 @@
 import styles from "./Form.module.css";
+//import { OdontoContext } from "../../contexts/odontoContext";
+//import { useContext } from "react";
 
 const LoginForm = () => {
   const handleSubmit = (e) => {
@@ -11,10 +13,14 @@ const LoginForm = () => {
     //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
   };
 
+  //const { darkMode } = useContext(OdontoContext);
+
   return (
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
+
+        
       <div
         className={`text-center card container ${styles.card}`}
       >

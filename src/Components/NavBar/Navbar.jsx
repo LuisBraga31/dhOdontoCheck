@@ -1,13 +1,17 @@
 import styles from "./Navbar.module.css";
+import { OdontoContext } from "../../contexts/odontoContext";
+import { useContext } from "react";
 
 const Navbar = () => {
+
+  const { darkMode, changeMode } = useContext(OdontoContext);
 
   return (
     <header className="sticky-top">
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar navbar-dark bg-dark ou navbar-light bg-light*/}
       <nav
-        className={`navbar navbar-expand-sm navbar-light bg-light`}
+        className={`navbar navbar-expand-sm ${darkMode ? `navbar-light bg-light` : `navbar-dark bg-dark`}`}
         aria-label="Third navbar example"
       >
         <div className="container">
@@ -55,8 +59,8 @@ const Navbar = () => {
                  Na linha seguinte deverá ser feito um teste se a aplicação
                  está em dark mode e deverá utilizar o icone ☀ ou 🌙 e btn-dark ou btn-light*/}
                 <button
-                  className={`btn btn-light${styles.btnStyle
-                    }`}
+                  className={`btn btn-light${styles.btnStyle}`}
+                  onClick={() => changeMode()}
                 >
                   ☀ 🌙{" "}
                 </button>
