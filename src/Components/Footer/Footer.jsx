@@ -2,6 +2,8 @@
 import styles from "./Footer.module.css";
 import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
+import { PiArrowFatUpFill } from 'react-icons/pi';  /* importando icone para o react  */
+
 
 const Footer = ( {value} ) => {
   const scrollToTop = () => {
@@ -11,9 +13,9 @@ const Footer = ( {value} ) => {
   const { darkMode } = useContext(OdontoContext);
 
   return (
-    <footer>
+    <footer>  {/* na linha 18 foi apagado o texto voltar para o topo e incluido o icone do botao de scrholl*/}
       <div className={styles.footerWrapper}>
-        { value ? <button className={`btn btn-danger ${styles.top}`} onClick={scrollToTop}> <strong> ⇧ </strong>Voltar para o topo</button> : <> </>}
+        { value ? <button className={`btn btn-danger ${styles.top}`} onClick={scrollToTop}><PiArrowFatUpFill /></button> : <> </>}
         
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar a class navbar-dark bg-dark ou navbar-light bg-light  */}

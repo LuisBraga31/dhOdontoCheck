@@ -16,7 +16,7 @@ const Navbar = () => {
       >
         <div className="container">
           {/* Ao clicar, o usuário deve ser redirecionado a home, com react-router */}
-          <a className={`navbar-brand ${styles.navbarBrand}`} href="/">
+          <a className={`navbar-brand ${styles.navbarBrand}`} href="/"> {/* estava /home, por isso não funcionou */}
             DH Odonto
           </a>
           <button
