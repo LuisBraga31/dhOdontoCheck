@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import styles from "./Card.module.css";
-//import { OdontoContext } from "../../contexts/odontoContext";
-//import { useContext } from "react";
+import { OdontoContext } from "../../contexts/OdontoContext";
+import { useContext } from "react";
 
 const Card = ( {dentista} ) => {
   
-  //const { darkMode } = useContext(OdontoContext);
+  const { darkMode } = useContext(OdontoContext);
 
   return (
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-      <div className={`card`}>
+      <div className={`card ${darkMode ? `card-light bg-light` : `card-dark bg-dark`}`}>
        
         <img
           className="card-img-top"
@@ -22,7 +22,7 @@ const Card = ( {dentista} ) => {
           {/* Na linha seguinte o link deverá utilizar a matricula, nome e sobrenome do dentista
           que vem da API */}
           <a href={`/dentist/MatriculaDoDentista`}>
-            <h5 className={`card-title ${styles.title}`}>{dentista.nome} {dentista.sobrenome}</h5>
+            <h5 className={`card-title ${styles.title} ${darkMode ? 'text-dark' : 'text-light'}`}>{dentista.nome} {dentista.sobrenome}</h5>
           </a>
         </div>
       </div>
