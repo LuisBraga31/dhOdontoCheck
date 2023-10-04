@@ -1,16 +1,49 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
+import { api } from "../../services/api"
 import { OdontoContext } from "../../contexts/OdontoContext";
 
 const ScheduleForm = () => {
 
-  const { darkMode } = useContext(OdontoContext);  
+  const [dentista, setDentista] = useState([]);
+  const [paciente, setPaciente] = useState([]);
+  const { darkMode } = useContext(OdontoContext); 
+
+
+
+
+  /*Pegar dados do paciente*/ 
+  const getPacientes = async() => {
+    
+    const res = await api.get('/paciente');
+    setPaciente(res.data.body);
+    console.log(paciente);
+
+  }
+
+  
 
   useEffect(() => {
-    //Nesse useEffect, você vai fazer um fetch na api buscando TODOS os dentistas
-    //e pacientes e carregar os dados em 2 estados diferentes
+
+    getPacientes()
+
+    
   }, []);
+
+
+  /*Pegar dados Dentista*/
+  const getDentistas = async() => {
+    
+    const res = await api.get('/dentista');
+    setDentista(res.data);
+  }
+
+  useEffect(() => {
+
+    getDentistas()
+
+  }, []);  
 
   const handleSubmit = (event) => {
     //Nesse handlesubmit você deverá usar o preventDefault,
@@ -30,26 +63,33 @@ const ScheduleForm = () => {
       >
         <form onSubmit={handleSubmit}>
           <div className={`row ${styles.rowSpacing}`}>
+
             <div className="col-sm-12 col-lg-6">
               <label htmlFor="dentist" className="form-label">
-                Dentist
+                Dentista
               </label>
               <select className="form-select" name="dentist" id="dentist">
                 {/*Aqui deve ser feito um map para listar todos os dentistas*/}
-                <option key={'Matricula do dentista'} value={'Matricula do dentista'}>
-                  {`Nome Sobrenome`}
-                </option>
-              </select>
+
+                { dentista?.map( (dentista, index) => (
+                  <option key={dentista.matricula} value={dentista}>
+                     {dentista.nome} {dentista.sobrenome}
+                  </option>
+                 ))}
+              </select>              
             </div>
+
             <div className="col-sm-12 col-lg-6">
               <label htmlFor="patient" className="form-label">
-                Patient
+                Paciente
               </label>
               <select className="form-select" name="patient" id="patient">
                 {/*Aqui deve ser feito um map para listar todos os pacientes*/}
-                <option key={'Matricula do paciente'} value={'Matricula do paciente'}>
-                  {`Nome Sobrenome`}
-                </option>
+                { paciente?.map((paciente, index) => (                         
+                  <option key={paciente.matricula} value={paciente}>
+                     {paciente.nome}  {paciente.sobrenome}
+                 </option>
+                 ))}
               </select>
             </div>
           </div>
