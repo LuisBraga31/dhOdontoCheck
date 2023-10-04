@@ -1,16 +1,35 @@
 import styles from "./Form.module.css";
 import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
+import { api } from '../../services/api'
 
 const LoginForm = () => {
-  const handleSubmit = (e) => {
-    //Nesse handlesubmit você deverá usar o preventDefault,
-    //enviar os dados do formulário e enviá-los no corpo da requisição 
-    //para a rota da api que faz o login /auth
-    //lembre-se que essa rota vai retornar um Bearer Token e o mesmo deve ser salvo
-    //no localstorage para ser usado em chamadas futuras
-    //Com tudo ocorrendo corretamente, o usuário deve ser redirecionado a página principal,com react-router
-    //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await api.post('/auth' , {
+          username: data.login,
+          password: data.password,
+        }, {
+          headers: {
+            'Content-Type' : 'application/json',
+          },
+        });
+
+        if(response.status === 200) {
+          console.log(response.data.token);
+          localStorage.setItem('token', response.data.token);
+        }
+
+
+      } catch (error) {
+        console.log(error);
+      }
+
   };
 
   const { darkMode } = useContext(OdontoContext);
