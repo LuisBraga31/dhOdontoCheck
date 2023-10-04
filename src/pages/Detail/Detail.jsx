@@ -1,28 +1,31 @@
 import DetailCard from "../../Components/DetailCard/DetailCard";
-//import { useEffect, useState, useParams } from "react";
-//import { api } from "../../services/api"
+import { useEffect, useState } from "react";
+import { api } from "../../services/api"
+import { useParams } from "react-router-dom";
 
 const Detail = () => {
 
-  //const [dentista, setDentista] = useState([]);
-  //const dentistaEscolhido = useParams();
-/*
+  const [dentista, setDentista] = useState([]);
+  const dentistaEscolhido = useParams();
+  
   const getDentistas = async() => {
     
-    //const res = await api.get('/dentista');
-    //setDentista(res.data);
+    const res = await api.get(`/dentista?matricula=${dentistaEscolhido.id}`);
+    setDentista(res.data);
+
+
   }
 
   useEffect(() => {
 
     getDentistas()
 
-  }, []);*/
+  }, []);
 
 
   return (
     <>
-      <DetailCard />
+      <DetailCard dentista={dentista}/>
     </>
   )
 }

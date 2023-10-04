@@ -4,8 +4,8 @@ import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-const Card = ( {dentista} ) => {
-  
+const Card = ( {dentista} ) => {  
+
   const { darkMode } = useContext(OdontoContext);
 
   return (
@@ -22,7 +22,7 @@ const Card = ( {dentista} ) => {
         <div className={`card-body ${styles.CardBody}`}>
           {/* Na linha seguinte o link deverá utilizar a matricula, nome e sobrenome do dentista
           que vem da API */}
-          <Link to={`/dentist/MatriculaDoDentista`}>
+          <Link to={`/dentist/${dentista.matricula}`}>
             <h5 className={`card-title ${styles.title} ${darkMode ? 'text-dark' : 'text-light'}`}>{dentista.nome} {dentista.sobrenome}</h5>
           </Link>
         </div>

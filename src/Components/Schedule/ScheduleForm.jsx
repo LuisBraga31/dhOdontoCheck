@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
 import { OdontoContext } from "../../contexts/OdontoContext";
