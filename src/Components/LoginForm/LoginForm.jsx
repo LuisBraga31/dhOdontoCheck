@@ -2,8 +2,12 @@ import styles from "./Form.module.css";
 import { OdontoContext } from "../../contexts/OdontoContext";
 import { useContext } from "react";
 import { api } from '../../services/api'
+import { useNavigate } from "react-router";
 
 const LoginForm = () => {
+  
+  const { darkMode, login } = useContext(OdontoContext);
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
       e.preventDefault();
 
@@ -21,8 +25,9 @@ const LoginForm = () => {
         });
 
         if(response.status === 200) {
-          console.log(response.data.token);
           localStorage.setItem('token', response.data.token);
+          login();
+          navigate('/');
         }
 
 
@@ -31,8 +36,6 @@ const LoginForm = () => {
       }
 
   };
-
-  const { darkMode } = useContext(OdontoContext);
 
   return (
     <>

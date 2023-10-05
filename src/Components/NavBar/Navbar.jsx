@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
-  const { darkMode, changeMode } = useContext(OdontoContext);
+  const { darkMode, changeMode, state, logout } = useContext(OdontoContext);
 
   return (
     <header className="sticky-top">
@@ -44,15 +44,20 @@ const Navbar = () => {
               </li>
 
               <li className={`nav-item ${styles.navBarLink}`}>
-                {/* Se o usuário estiver logado, deverá aparecer um botão de logout
-                que vai apagar o token do localstorage.
-                Se o usuário estiver deslogado, um link fará um redirecionamento, com react-router,
-                ao formulário de login
-                O botão de logout deverá ser testado darkmode
-                se sim, btn-dark, se não, btn-light */}
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
+                {state.login ? (
+                    <button onClick={()=> logout()}
+                    className={`btn ${darkMode ? `btn-light` : `btn-dark`}`}
+                    >
+                      Logout
+                    </button>
+
+                  ) : (
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                  )
+                }
+
               </li>
 
               <li className={`nav-item`}>
