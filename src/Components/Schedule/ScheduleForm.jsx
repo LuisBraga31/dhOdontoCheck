@@ -3,15 +3,16 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
 import { api } from "../../services/api"
 import { OdontoContext } from "../../contexts/OdontoContext";
+import { useNavigate } from "react-router-dom";
 
 const ScheduleForm = () => {
 
   const [dentista, setDentista] = useState([]);
   const [paciente, setPaciente] = useState([]);
   const { darkMode } = useContext(OdontoContext); 
+  const token = localStorage.getItem("token");
 
-
-
+  const navigate = useNavigate();
 
   /*Pegar dados do paciente*/ 
   const getPacientes = async() => {
@@ -22,35 +23,49 @@ const ScheduleForm = () => {
 
   }
 
-  
-
-  useEffect(() => {
-
-    getPacientes()
-
-    
-  }, []);
-
-
   /*Pegar dados Dentista*/
   const getDentistas = async() => {
     
     const res = await api.get('/dentista');
     setDentista(res.data);
+    console.log(res.data);
   }
 
   useEffect(() => {
 
+    getPacientes()
     getDentistas()
+  
+  }, []);
 
-  }, []);  
+  const handleSubmit = async (event) => {
 
-  const handleSubmit = (event) => {
-    //Nesse handlesubmit você deverá usar o preventDefault,
-    //obter os dados do formulário e enviá-los no corpo da requisição 
-    //para a rota da api que marca a consulta
-    //lembre-se que essa rota precisa de um Bearer Token para funcionar.
-    //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await api.post('/consulta' , {
+        dentista: {matricula: data.dentist},
+        paciente: {matricula: data.patient},
+        dataHoraAgendamento: data.appointmentDate,
+      }, {
+        headers: {
+          'Content-Type' : 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if(response.status === 200) {
+        console.log(response.data);
+        //navigate('/');
+      } 
+
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   return (
@@ -72,7 +87,7 @@ const ScheduleForm = () => {
                 {/*Aqui deve ser feito um map para listar todos os dentistas*/}
 
                 { dentista?.map( (dentista, index) => (
-                  <option key={dentista.matricula} value={dentista}>
+                  <option key={dentista.matricula} value={dentista.matricula}>
                      {dentista.nome} {dentista.sobrenome}
                   </option>
                  ))}
@@ -86,7 +101,7 @@ const ScheduleForm = () => {
               <select className="form-select" name="patient" id="patient">
                 {/*Aqui deve ser feito um map para listar todos os pacientes*/}
                 { paciente?.map((paciente, index) => (                         
-                  <option key={paciente.matricula} value={paciente}>
+                  <option key={paciente.matricula} value={paciente.matricula} >
                      {paciente.nome}  {paciente.sobrenome}
                  </option>
                  ))}
