@@ -1,13 +1,15 @@
 import styles from "./Form.module.css";
 import { OdontoContext } from "../../contexts/OdontoContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { api } from '../../services/api'
 import { useNavigate } from "react-router";
 
 const LoginForm = () => {
   
+  const [errorForm, setErrorForm] = useState(false);
   const { darkMode, login } = useContext(OdontoContext);
   const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
       e.preventDefault();
 
@@ -28,10 +30,11 @@ const LoginForm = () => {
           localStorage.setItem('token', response.data.token);
           login();
           navigate('/');
-        }
-
+        } 
 
       } catch (error) {
+        setErrorForm(true);
+        console.log(errorForm)
         console.log(error);
       }
 
@@ -49,18 +52,23 @@ const LoginForm = () => {
         <div className={`card-body ${styles.CardBody}`}>
           <form onSubmit={handleSubmit}>
             <input
-              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}`}
+              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
+                      ${errorForm ? `${styles.errorInput}` : ''}
+              `}
               placeholder="Login"
               name="login"
               required
             />
             <input
-              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}`}
+              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
+                      ${errorForm ? `${styles.errorInput}` : ''}
+              `}
               placeholder="Password"
               name="password"
               type="password"
               required
             />
+            {errorForm ? (<small className={styles.error}> Verifique suas informações novamente </small>) : (<> </>)}
             <button className="btn btn-primary" type="submit">
               Send
             </button>
