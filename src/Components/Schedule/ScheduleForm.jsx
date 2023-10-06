@@ -11,6 +11,7 @@ const ScheduleForm = () => {
   const [paciente, setPaciente] = useState([]);
   const { darkMode } = useContext(OdontoContext); 
   const token = localStorage.getItem("token");
+  const [errorForm, setErrorForm] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,7 +64,9 @@ const ScheduleForm = () => {
       } 
 
     } catch (error) {
-      console.log(error);
+      setErrorForm(true);
+        console.log(errorForm);
+        console.log(error);
     }
 
   };
@@ -83,7 +86,7 @@ const ScheduleForm = () => {
               <label htmlFor="dentist" className="form-label">
                 Dentista
               </label>
-              <select className="form-select" name="dentist" id="dentist">
+              <select className={`form-select ${errorForm ? styles.errorInput : ''}`} name="dentist" id="dentist">
                 {/*Aqui deve ser feito um map para listar todos os dentistas*/}
 
                 { dentista?.map( (dentista, index) => (
@@ -98,7 +101,7 @@ const ScheduleForm = () => {
               <label htmlFor="patient" className="form-label">
                 Paciente
               </label>
-              <select className="form-select" name="patient" id="patient">
+              <select className={`form-select ${errorForm ? styles.errorInput : ''}`} name="patient" id="patient">
                 {/*Aqui deve ser feito um map para listar todos os pacientes*/}
                 { paciente?.map((paciente, index) => (                         
                   <option key={paciente.matricula} value={paciente.matricula} >
@@ -114,7 +117,7 @@ const ScheduleForm = () => {
                 Date
               </label>
               <input
-                className="form-control"
+                className={`form-select ${errorForm ? styles.errorInput : ''}`}
                 id="appointmentDate"
                 name="appointmentDate"
                 type="datetime-local"
@@ -124,9 +127,10 @@ const ScheduleForm = () => {
           <div className={`row ${styles.rowSpacing}`}>
             {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
+             {errorForm ? (<small className={styles.error}> Verifique suas informações novamente </small>) : (<> </>)}
             <button
               className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button
-                }`}
+                }` }
               type="submit"
             >
               Schedule
