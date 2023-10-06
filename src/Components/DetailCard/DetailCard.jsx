@@ -34,7 +34,7 @@ const DetailCard = ( { dentista } ) => {
                 <strong> Sobrenome: </strong> {dentista.sobrenome}
               </li>
               <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
-                <strong> Usuário: </strong> {""}
+                <strong> Usuário: </strong> {dentista?.usuario?.username}
               </li>
             </ul>
 
