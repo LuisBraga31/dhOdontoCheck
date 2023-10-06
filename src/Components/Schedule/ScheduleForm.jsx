@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
 import { api } from "../../services/api"
 import { OdontoContext } from "../../contexts/globalContext";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ScheduleForm = () => {
@@ -12,14 +11,11 @@ const ScheduleForm = () => {
   const [paciente, setPaciente] = useState([]);
   const { darkMode } = useContext(OdontoContext); 
   const token = localStorage.getItem("token");
-  
-  const navigate = useNavigate();
 
   const getPacientes = async() => {
     
     const res = await api.get('/paciente');
     setPaciente(res.data.body);
-    console.log(paciente);
 
   }
 
@@ -27,7 +23,6 @@ const ScheduleForm = () => {
     
     const res = await api.get('/dentista');
     setDentista(res.data);
-    console.log(res.data);
   }
 
   useEffect(() => {
@@ -58,21 +53,28 @@ const ScheduleForm = () => {
 
       if(response.status === 200) {
         console.log(response.data);
-        //navigate('/');
 
         Swal.fire({
           icon: 'success',
           title: 'Sucesso',
           text: 'Consulta cadastrada',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/';
+          } else {
+            window.location.href = '/';
+          }
         })
-      } 
+      }
 
     } catch (error) {
+      console.log(error.response.data)
       Swal.fire({
         icon: 'error',
         title: 'Atenção:',
-        text: 'Dados inválidos',
+        text: error.response.data,
       })
+
     }
 
   };
