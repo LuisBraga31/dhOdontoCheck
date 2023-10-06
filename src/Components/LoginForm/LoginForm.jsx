@@ -1,5 +1,5 @@
 import styles from "./Form.module.css";
-import { OdontoContext } from "../../contexts/OdontoContext";
+import { OdontoContext } from "../../contexts/globalContext";
 import { useContext, useState } from "react";
 import { api } from '../../services/api'
 import { useNavigate } from "react-router";
@@ -41,15 +41,11 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
-
+    <>  
+      <div className={`text-center card container ${styles.card} ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75`}`} >
         
-      <div
-        className={`text-center card container ${styles.card} ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75`}`}
-      >
         <div className={`card-body ${styles.CardBody}`}>
+          
           <form onSubmit={handleSubmit}>
             <input
               className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
@@ -59,6 +55,7 @@ const LoginForm = () => {
               name="login"
               required
             />
+            
             <input
               className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
                       ${errorForm ? `${styles.errorInput}` : ''}

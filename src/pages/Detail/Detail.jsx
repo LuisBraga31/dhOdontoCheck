@@ -9,11 +9,8 @@ const Detail = () => {
   const dentistaEscolhido = useParams();
   
   const getDentistas = async() => {
-    
     const res = await api.get(`/dentista?matricula=${dentistaEscolhido.id}`);
     setDentista(res.data);
-
-
   }
 
   useEffect(() => {

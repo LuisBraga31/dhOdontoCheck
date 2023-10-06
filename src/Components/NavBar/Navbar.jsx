@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import { OdontoContext } from "../../contexts/OdontoContext";
+import { OdontoContext } from "../../contexts/globalContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,15 +9,12 @@ const Navbar = () => {
 
   return (
     <header className="sticky-top">
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar navbar-dark bg-dark ou navbar-light bg-light*/}
       <nav
         className={`navbar navbar-expand-sm ${darkMode ? `navbar-light bg-light` : `navbar-dark bg-dark`}`}
         aria-label="Third navbar example"
       >
         <div className="container">
-          {/* Ao clicar, o usuário deve ser redirecionado a home, com react-router */}
-          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/"> {/* estava /home, por isso não funcionou */}
+          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/"> 
             DH Odonto
           </Link>
           <button
@@ -37,6 +34,7 @@ const Navbar = () => {
             id="navbarsExample03"
           >
             <ul className="navbar-nav mb-2 mb-sm-0">
+
               <li className={`nav-item ${styles.navBarLink}`}>
                 <Link className="nav-link" to="/">
                   Home
@@ -61,9 +59,6 @@ const Navbar = () => {
               </li>
 
               <li className={`nav-item`}>
-                {/*
-                 Na linha seguinte deverá ser feito um teste se a aplicação
-                 está em dark mode e deverá utilizar o icone ☀ ou 🌙 e btn-dark ou btn-light*/}
                 <button
                   className={`btn ${darkMode ? `btn-dark` : `btn-light`} ${styles.btnStyle}`}
                   onClick={() => changeMode()}
@@ -71,6 +66,7 @@ const Navbar = () => {
                    {darkMode ? "🌙" : "🌞"}
                 </button>
               </li>
+
             </ul>
           </div>
         </div>

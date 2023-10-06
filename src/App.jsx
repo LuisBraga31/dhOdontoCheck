@@ -1,4 +1,4 @@
-import { RouteList } from "./Routes";
+import { RouteList } from "./routes";
 
 function App() {
   return (

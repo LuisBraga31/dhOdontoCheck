@@ -1,16 +1,15 @@
+/* eslint-disable react/prop-types */
 import { createContext, useState, useReducer } from "react";
-import { Reducer } from '../reducers/Reducer'
-
+import { loginReducer } from '../reducers/loginReducer'
 
 export const OdontoContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 const OdontoContextProvider = ( {children}) => {
     
     const data = localStorage.getItem("darkmode");
     const [darkMode, setDarkMode] = useState(data ? JSON.parse(data) : true);
 
-    const [state, dispatch] = useReducer(Reducer, {login: !!localStorage.getItem("token")})
+    const [state, dispatch] = useReducer(loginReducer, {login: !!localStorage.getItem("token")})
 
     const login = () => {
       dispatch({type: 'SET_LOGIN'})

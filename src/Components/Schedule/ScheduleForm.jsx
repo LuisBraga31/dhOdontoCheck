@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./ScheduleForm.module.css";
 import { api } from "../../services/api"
-import { OdontoContext } from "../../contexts/OdontoContext";
+import { OdontoContext } from "../../contexts/globalContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -15,7 +15,6 @@ const ScheduleForm = () => {
   
   const navigate = useNavigate();
 
-  /*Pegar dados do paciente*/ 
   const getPacientes = async() => {
     
     const res = await api.get('/paciente');
@@ -24,7 +23,6 @@ const ScheduleForm = () => {
 
   }
 
-  /*Pegar dados Dentista*/
   const getDentistas = async() => {
     
     const res = await api.get('/dentista');
@@ -81,8 +79,7 @@ const ScheduleForm = () => {
 
   return (
     <>
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
+
       <div
         className={`text-center container}`
         }
@@ -95,8 +92,6 @@ const ScheduleForm = () => {
                 Dentista
               </label>
               <select className={`form-select`} name="dentist" id="dentist">
-                {/*Aqui deve ser feito um map para listar todos os dentistas*/}
-
                 { dentista?.map( (dentista, index) => (
                   <option key={dentista.matricula} value={dentista.matricula}>
                      {dentista.nome} {dentista.sobrenome}
@@ -110,7 +105,6 @@ const ScheduleForm = () => {
                 Paciente
               </label>
               <select className={`form-select`} name="patient" id="patient">
-                {/*Aqui deve ser feito um map para listar todos os pacientes*/}
                 { paciente?.map((paciente, index) => (                         
                   <option key={paciente.matricula} value={paciente.matricula} >
                      {paciente.nome}  {paciente.sobrenome}
@@ -133,11 +127,9 @@ const ScheduleForm = () => {
             </div>
           </div>
           <div className={`row ${styles.rowSpacing}`}>
-            {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
+
             <button
-              className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button
-                }` }
+              className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button}` } 
               type="submit"
             >
               Schedule

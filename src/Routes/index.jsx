@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { AlternativeLayout } from '../layouts/AlternativeLayout'
+
 import Detail from "../pages/Detail/Detail";
 import Contact from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
-import OdontoContextProvider from '../contexts/OdontoContext';
 
+import OdontoContextProvider from '../contexts/globalContext';
 
-// 21-09 - Configuramos a pasta de rotas com as 3 paginas existentes na aplicacao.
-// Foi utilizado o React router dom
 export function RouteList() {
   return (
     <>
@@ -16,13 +16,16 @@ export function RouteList() {
       <OdontoContextProvider>
 
         <Routes>
+
           <Route path="/" element={<DefaultLayout/>}>
             <Route path="/" element={<Home />} /> 
           </Route>
+
           <Route path="/" element={<AlternativeLayout/>}>
             <Route path="/login" element={<Contact/>}/> 
             <Route path="/dentist/:id" element={<Detail/>}/>
-          </Route>  
+          </Route> 
+
         </Routes>
         
       </OdontoContextProvider>   

@@ -7,7 +7,6 @@ const Home = () => {
   const [dentista, setDentista] = useState([]);
 
   const getDentistas = async() => {
-    
     const res = await api.get('/dentista');
     setDentista(res.data);
   }

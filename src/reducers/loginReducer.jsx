@@ -1,6 +1,4 @@
-
-
-export const Reducer = (state, action) => {
+export const loginReducer = (state, action) => {
 
     switch(action.type) {
         case 'SET_LOGIN':
