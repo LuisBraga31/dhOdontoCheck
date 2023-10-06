@@ -38,16 +38,17 @@ const ScheduleForm = () => {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
+    console.log(token);
     try {
       const response = await api.post('/consulta' , {
         dentista: {matricula: data.dentist},
         paciente: {matricula: data.patient},
         dataHoraAgendamento: data.appointmentDate,
+        
       }, {
         headers: {
           'Content-Type' : 'application/json',
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       });
 
@@ -68,7 +69,7 @@ const ScheduleForm = () => {
       }
 
     } catch (error) {
-      console.log(error.response.data)
+
       Swal.fire({
         icon: 'error',
         title: 'Atenção:',
