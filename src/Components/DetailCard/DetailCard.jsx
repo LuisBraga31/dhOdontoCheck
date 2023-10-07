@@ -7,15 +7,15 @@ import ScheduleFormModal from "../Schedule/ScheduleFormModal";
 
 const DetailCard = ( { dentista } ) => {
 
-  const { darkMode } = useContext(OdontoContext);  
+  const { tema } = useContext(OdontoContext);  
 
   return (
 
     <>
       <h1> {dentista.nome} {dentista.sobrenome}</h1>
-      <section className={`card col-sm-12 col-lg-6 container ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-2 border-secondary mb-2`}`}>
+      <section className={`card col-sm-12 col-lg-6 container ${tema ? `card-light bg-light` : `card-dark bg-secondary border-2 border-secondary mb-2`}`}>
 
-        <div className={`card-body row ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75 `}`}>
+        <div className={`card-body row ${tema ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75 `}`}>
           
           <div className="col-sm-12 col-lg-6">
             <img
@@ -28,12 +28,12 @@ const DetailCard = ( { dentista } ) => {
           <div className="col-sm-12 col-lg-6">
             
             <ul className="list-group">
-              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
+              <li className={`list-group-item ${tema ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
                 <strong> Nome: </strong> {dentista.nome}</li>
-              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
+              <li className={`list-group-item ${tema ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
                 <strong> Sobrenome: </strong> {dentista.sobrenome}
               </li>
-              <li className={`list-group-item ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
+              <li className={`list-group-item ${tema ? `card-light bg-light` : `card-dark bg-secondary border-black border-opacity-75 ${styles.colorLight}`} `}>
                 <strong> Usuário: </strong> {dentista?.usuario?.username}
               </li>
             </ul>
@@ -42,7 +42,7 @@ const DetailCard = ( { dentista } ) => {
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button}`}
+                className={`btn ${tema ? `btn-light` : `btn-dark`} ${styles.button}`}
               >
                 Marcar consulta
               </button>

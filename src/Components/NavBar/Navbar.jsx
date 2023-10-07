@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
-  const { darkMode, changeMode, state, logout } = useContext(OdontoContext);
+  const { tema, mudarTema, state, logout } = useContext(OdontoContext);
 
   return (
     <header className="sticky-top">
       <nav
-        className={`navbar navbar-expand-sm ${darkMode ? `navbar-light bg-light` : `navbar-dark bg-dark`}`}
+        className={`navbar navbar-expand-sm ${tema ? `navbar-light bg-light` : `navbar-dark bg-dark`}`}
         aria-label="Third navbar example"
       >
         <div className="container">
@@ -44,7 +44,7 @@ const Navbar = () => {
               <li className={`nav-item ${styles.navBarLink}`}>
                 {state.login ? (
                     <button onClick={()=> logout()}
-                    className={`btn ${darkMode ? `btn-light` : `btn-dark`}`}
+                    className={`btn ${tema ? `btn-light` : `btn-dark`}`}
                     >
                       Logout
                     </button>
@@ -60,10 +60,10 @@ const Navbar = () => {
 
               <li className={`nav-item`}>
                 <button
-                  className={`btn ${darkMode ? `btn-dark` : `btn-light`} ${styles.btnStyle}`}
-                  onClick={() => changeMode()}
+                  className={`btn ${tema ? `btn-dark` : `btn-light`} ${styles.btnStyle}`}
+                  onClick={() => mudarTema()}
                 >
-                   {darkMode ? "🌙" : "🌞"}
+                   {tema ? "🌙" : "🌞"}
                 </button>
               </li>
 

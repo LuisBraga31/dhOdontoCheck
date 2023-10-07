@@ -10,7 +10,7 @@ const Footer = ( {value} ) => {
     window.scrollTo(0, 0)
   }
 
-  const { darkMode } = useContext(OdontoContext);
+  const { tema } = useContext(OdontoContext);
 
   return (
     <footer>  {/* na linha 18 foi apagado o texto voltar para o topo e incluido o icone do botao de scroll*/}
@@ -19,15 +19,15 @@ const Footer = ( {value} ) => {
         
         { value ? <button className={`btn btn-danger ${styles.top}`} onClick={scrollToTop}><PiArrowFatUpFill /></button> : <> </>}
         
-        <div className={`${darkMode ? `navbar-light bg-light` : `navbar-dark bg-dark`} ${styles.footer}`}>
+        <div className={`${tema ? `navbar-light bg-light` : `navbar-dark bg-dark`} ${styles.footer}`}>
           <div className="container">
             <div className={`row`}>
               
               <div className="col-sm-12 col-lg-6">
-                <img className={`${styles.dhLogo} ${darkMode ? `` : styles.iconsDark} `} src="/images/DH.png" alt='DH-logo' />
+                <img className={`${styles.dhLogo} ${tema ? `` : styles.iconsDark} `} src="/images/DH.png" alt='DH-logo' />
               </div>
 
-              <div className={`col-sm-12 col-lg-6 ${styles.icons} ${darkMode ? `` : styles.iconsDark}`}>
+              <div className={`col-sm-12 col-lg-6 ${styles.icons} ${tema ? `` : styles.iconsDark}`}>
                 <img src="/images/ico-facebook.png" alt="ícone do facebook" className={styles.icon} />
                 <img src="/images/ico-instagram.png" alt="ícone do instagram" className={styles.icon} />
                 <img src="/images/ico-whatsapp.png" alt="ícone do whatsapp" className={styles.icon} />

@@ -6,8 +6,8 @@ export const OdontoContext = createContext();
 
 const OdontoContextProvider = ( {children}) => {
     
-    const data = localStorage.getItem("darkmode");
-    const [darkMode, setDarkMode] = useState(data ? JSON.parse(data) : true);
+    const data = localStorage.getItem("temaAtual");
+    const [tema, setTema] = useState(data ? JSON.parse(data) : true);
 
     const [state, dispatch] = useReducer(loginReducer, {login: !!localStorage.getItem("token")})
 
@@ -20,13 +20,13 @@ const OdontoContextProvider = ( {children}) => {
       localStorage.removeItem("token");
     }
 
-    const changeMode = () => {
-      localStorage.setItem("darkmode", !darkMode);
-      setDarkMode(!darkMode);
+    const mudarTema = () => {
+      localStorage.setItem("temaAtual", !tema);
+      setTema(!tema);
     }
 
     return (
-    <OdontoContext.Provider value={ {changeMode, darkMode, state, login, logout} }>
+    <OdontoContext.Provider value={ {mudarTema, tema, state, login, logout} }>
         { children }
     </OdontoContext.Provider>
   )

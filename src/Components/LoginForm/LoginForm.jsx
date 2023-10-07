@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 const LoginForm = () => {
   
   const [errorForm, setErrorForm] = useState(false);
-  const { darkMode, login } = useContext(OdontoContext);
+  const { tema, login } = useContext(OdontoContext);
   const navigate = useNavigate();
   
   const handleSubmit = async (e) => {
@@ -42,13 +42,13 @@ const LoginForm = () => {
 
   return (
     <>  
-      <div className={`text-center card container ${styles.card} ${darkMode ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75`}`} >
+      <div className={`text-center card container ${styles.card} ${tema ? `card-light bg-light` : `card-dark bg-dark bg-opacity-75`}`} >
         
         <div className={`card-body ${styles.CardBody}`}>
           
           <form onSubmit={handleSubmit}>
             <input
-              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
+              className={`form-control ${styles.inputSpacing} ${tema ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
                       ${errorForm ? `${styles.errorInput}` : ''}
               `}
               placeholder="Login"
@@ -57,7 +57,7 @@ const LoginForm = () => {
             />
             
             <input
-              className={`form-control ${styles.inputSpacing} ${darkMode ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
+              className={`form-control ${styles.inputSpacing} ${tema ? `card-light bg-light` : `card-dark bg-secondary border-secondary`}
                       ${errorForm ? `${styles.errorInput}` : ''}
               `}
               placeholder="Password"

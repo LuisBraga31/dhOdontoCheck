@@ -9,7 +9,7 @@ const ScheduleForm = () => {
 
   const [dentista, setDentista] = useState([]);
   const [paciente, setPaciente] = useState([]);
-  const { darkMode } = useContext(OdontoContext); 
+  const { tema } = useContext(OdontoContext); 
   const token = localStorage.getItem("token");
 
   const getPacientes = async() => {
@@ -132,7 +132,7 @@ const ScheduleForm = () => {
           <div className={`row ${styles.rowSpacing}`}>
 
             <button
-              className={`btn ${darkMode ? `btn-light` : `btn-dark`} ${styles.button}` } 
+              className={`btn ${tema ? `btn-light` : `btn-dark`} ${styles.button}` } 
               type="submit"
             >
               Schedule

@@ -6,11 +6,11 @@ import { useContext } from "react";
 
 export function DefaultLayout() {
   
-  const { darkMode } = useContext(OdontoContext);
+  const { tema } = useContext(OdontoContext);
   
   return (
     <>
-    <div className={`app ${darkMode ? `light` : `dark` }`}>
+    <div className={`app ${tema ? `light` : `dark` }`}>
       <Navbar/>
       <main>
         <Outlet/>  
