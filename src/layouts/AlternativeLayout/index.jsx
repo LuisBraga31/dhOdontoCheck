@@ -1,12 +1,20 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../../Components/NavBar/Navbar'
 import Footer from '../../Components/Footer/Footer'
 import { OdontoContext } from "../../contexts/globalContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export function AlternativeLayout() {
 
   const { tema } = useContext(OdontoContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate("/home");
+    }
+  });
 
   return (
     <>

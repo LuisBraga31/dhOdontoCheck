@@ -14,7 +14,7 @@ const Navbar = () => {
         aria-label="Third navbar example"
       >
         <div className="container">
-          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/"> 
+          <Link className={`navbar-brand ${styles.navbarBrand}`} to="/home"> 
             DH Odonto
           </Link>
           <button
@@ -36,7 +36,7 @@ const Navbar = () => {
             <ul className="navbar-nav mb-2 mb-sm-0">
 
               <li className={`nav-item ${styles.navBarLink}`}>
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/home">
                   Home
                 </Link>
               </li>

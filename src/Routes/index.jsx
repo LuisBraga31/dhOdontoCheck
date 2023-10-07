@@ -18,7 +18,7 @@ export function RouteList() {
         <Routes>
 
           <Route path="/" element={<DefaultLayout/>}>
-            <Route path="/" element={<Home />} /> 
+            <Route path="/home" element={<Home />} /> 
           </Route>
 
           <Route path="/" element={<AlternativeLayout/>}>
